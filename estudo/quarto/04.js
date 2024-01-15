@@ -67,3 +67,72 @@ console.log(`${pessoaTres.nome} ${pessoaTres.sobrenome} tem ${pessoaTres.age} an
 //Usando age para SET
 pessoaTres.age = 89
 console.log(`${pessoaTres.nome} tem ${pessoaTres.age} anos`)
+
+// Herança
+class Individuo {
+  age = 0
+
+  constructor(name){
+    this.name = name 
+  }
+
+  cumprimentar(){
+    console.log(`${this.name}: Diz Olá!`)
+  }
+}
+
+class Estudante extends Individuo { //Estudante herdando tudo que tem em Individuo
+
+  constructor(name, id){
+    super(name)              // Se referindo a classe acima ou seja Individuo
+    this.id = id             //this se refere a própria classe que estamos criado, nesse caso Estudante
+  }
+
+  cumprimentar(){
+    console.log(`${this.name} é novato na escola!`) //Esse metodo novo ele subscreve o metodo anterior da superClasse(Individuo)
+  }
+
+  //Posso chamar a função da superClasse:
+  boas(){
+    super.cumprimentar()
+  }
+}
+
+
+let p1 = new Estudante ("Silva", 1) //Criando uma outra instancia ou objeto que herdou todas as carcteristicas de Individuo
+p1.age = 20
+console.log(`${p1.name} tem ${p1.age} anos e matricula #${p1.id}`)
+p1.cumprimentar()                   //Chamando o método da superclasse
+p1.boas()                           //Método personalizado de Estudante, chamado a classe maior. 
+
+
+//Classes: Variável/Método estático
+
+class Fulano {
+  
+  //hands = 2 - Variavel Dinamica
+  static hands = 2 //Variavel Estatica, associada a classe Fulano, mas não ao objeto que for instaciado, criado
+  age = 0
+
+  constructor(nome) {
+    this.nome = nome
+  }
+
+  falar(){
+    console.log(`Oi, meu nome é ${this.nome} e tenho ${Fulano.hands} mãos.`) 
+    // ${this.hands} mãos.`-> usando assim retornará undefined
+    // ${Fulano.hands} mãos -> Pegando dados gerais da Classe principal
+  
+  }
+
+  static conversar(){
+    console.log('Olá!')
+  }
+}
+
+let teste = new Fulano("Leite")
+teste.falar()
+Fulano.conversar() //Chamando a função pela Classe porque é um metodo estatico
+
+
+//Classes: Factory
