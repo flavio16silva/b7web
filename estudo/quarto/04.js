@@ -136,3 +136,23 @@ Fulano.conversar() //Chamando a função pela Classe porque é um metodo estatic
 
 
 //Classes: Factory
+class Humano {
+
+  age = 0
+
+  constructor(name){
+    this.name = name
+  }
+
+}
+
+function criarHumano(name, age){ //Cria uma função que o resultado final dela é a instacia daquela classe que deseja-se criar.
+  let h = new Humano(name)       //criando instancia/objeto 
+  h.age = age                    //setar a idade
+  return h                       //retornar todo o objeto
+
+}
+
+let z = criarHumano('Mendes', 70)
+console.log(`${z.name} tem ${z.age} anos.`)
+
