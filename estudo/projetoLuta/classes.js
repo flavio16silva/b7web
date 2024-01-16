@@ -15,7 +15,7 @@ class Personagem {
   }
 
   //Pegar vida do personagem
-  get life(){
+  get life() {
     return this._life
   }
 
@@ -26,7 +26,8 @@ class Personagem {
 }
 
 //Caracteristicas de cada Personagem
-  class Guerreiro extends Personagem{
+// Guerreiro 
+class Guerreiro extends Personagem{
     constructor(nome){
       super(nome)
       this.life = 100
@@ -36,6 +37,7 @@ class Personagem {
     }
   }
 
+  //Mago
   class Mago extends Personagem{
     constructor(nome){
       super(nome)
@@ -46,8 +48,9 @@ class Personagem {
     }
   }
 
-  class pequenoMonstro extends Personagem{
-    constructor (){
+  //Monstro Pequeno
+  class PequenoMonstro extends Personagem{
+    constructor(){
       super('Mike Wazowski')
       this.life = 40
       this.attack = 4
@@ -56,7 +59,8 @@ class Personagem {
     }
   }
 
-  class grandeMonstro extends Personagem{
+   //Monstro Grande
+  class GrandeMonstro extends Personagem{
     constructor(){
       super('James Sullivan')
       this.life = 120
@@ -65,3 +69,32 @@ class Personagem {
       this.maxLife = this.life
     }
   }
+
+  //Lutas a serem feitas
+  class Cenario {
+      constructor(luta1, luta2, luta1Elemento, luta2Elemento){
+        this.luta1 = luta1
+        this.luta2 = luta2
+        this.luta1Elemento = luta1Elemento
+        this.luta2Elemento = luta2Elemento
+      }
+
+      //Iniciando o Jogo
+        inicio() {
+          //Evento do botão de atacar
+          this.atualiza()
+        }
+
+      //Atualizacao do jogo
+        atualiza() {
+        //Luta 1
+          this.luta1Elemento.querySelector('.name').innerHTML = this.luta1.name
+
+          //Luta 2
+          this.luta2Elemento.querySelector('.name').innerHTML = this.luta2.name
+       }  
+
+  }
+
+ 
+
