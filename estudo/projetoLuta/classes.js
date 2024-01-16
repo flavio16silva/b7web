@@ -45,3 +45,23 @@ class Personagem {
       this.maxLife = this.life
     }
   }
+
+  class pequenoMonstro extends Personagem{
+    constructor (){
+      super('Mike Wazowski')
+      this.life = 40
+      this.attack = 4
+      this.defense = 4
+      this.maxLife = this.life
+    }
+  }
+
+  class grandeMonstro extends Personagem{
+    constructor(){
+      super('James Sullivan')
+      this.life = 120
+      this.attack = 16
+      this.defense = 6
+      this.maxLife = this.life
+    }
+  }
