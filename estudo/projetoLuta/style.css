@@ -1,4 +1,4 @@
-.areadaluta {
+.fightarea {
   display: flex;
   gap: 20px;
 }
@@ -7,13 +7,13 @@
   flex:1;
 }
 
-.areabarra{
+.lifebar{
   height: 10px;
   border:1px solid #333;
   border-radius: 5px; 
 }
 
-.areabarra .barra{
+.lifebar .bar{
   height: inherit;
   background-color: red;
   border-radius: 5px;
