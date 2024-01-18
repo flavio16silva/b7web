@@ -1,7 +1,7 @@
 //Guerreiro ou Mago
 //Monstro Pequeno ou Monstro Grande
 
-// Personagem
+// Personagem Padrão
 class Personagem {
   //Caracteristicas
     _life = 1
@@ -60,7 +60,7 @@ class Guerreiro extends Personagem{
   }
 
    //Monstro Grande
-  class GrandeMonstro extends Personagem{
+  class BigMonstro extends Personagem{
     constructor(){
       super('James Sullivan')
       this.life = 120
@@ -87,11 +87,17 @@ class Guerreiro extends Personagem{
 
       //Atualizacao do jogo
         atualiza() {
-        //Luta 1
-          this.luta1Elemento.querySelector('.name').innerHTML = this.luta1.name
-
-          //Luta 2
-          this.luta2Elemento.querySelector('.name').innerHTML = this.luta2.name
+        //--------- Luta 1
+          this.luta1Elemento.querySelector('.nome').innerHTML = `${this.luta1.nome} - ${this.luta1.life} HP`
+        //Porcentagem de Vida
+        let vidaV1 = (this.luta1.life / this.luta1.maxLife) * 100  
+        this.luta1Elemento.querySelector('.bar').style.width = `${vidaV1}%`
+        
+        //---------- Luta 2
+          this.luta2Elemento.querySelector('.nome').innerHTML = `${this.luta2.nome} - ${this.luta2.life} HP`
+        //Porcentagem de Vida
+        let vidaV2 = (this.luta2.life / this.luta2.maxLife) * 100  
+        this.luta2Elemento.querySelector('.bar').style.width = `${vidaV2}%`  
        }  
 
   }
