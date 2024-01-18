@@ -1,17 +1,17 @@
-let personagem = new Mago('Leite')
+let personagem = new Guerreiro('Silva')
 
 console.log(personagem.nome)
 console.log(personagem.life)
 console.log(personagem.attack)
 
-let monster = new PequenoMonstro()
-console.log(monster.nome)
-console.log(monster.attack)
+let monstro = new PequenoMonstro()
+console.log(monstro.nome)
+console.log(monstro.attack)
 
 //Inicializando o jogo
 const cenario = new Cenario(
-  char,
-  monster,
+  personagem,
+  monstro,
   document.querySelector('#char'),
   document.querySelector('#monster')
 )
