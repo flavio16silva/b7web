@@ -83,22 +83,49 @@ class Guerreiro extends Personagem{
         inicio() {
           //Evento do botão de atacar
           this.atualiza()
+
+          this.luta1Elemento.querySelector('.attackButton').addEventListener('click', () => this.fazerAtaque(this.luta1, this.luta2))
+          this.luta2Elemento.querySelector('.attackButton').addEventListener('click', () => this.fazerAtaque(this.luta2, this.luta1))
         }
+
 
       //Atualizacao do jogo
         atualiza() {
         //--------- Luta 1
-          this.luta1Elemento.querySelector('.nome').innerHTML = `${this.luta1.nome} - ${this.luta1.life} HP`
+          this.luta1Elemento.querySelector('.nome').innerHTML = `${this.luta1.nome} - ${this.luta1.life.toFixed(1)} HP`
         //Porcentagem de Vida
         let vidaV1 = (this.luta1.life / this.luta1.maxLife) * 100  
         this.luta1Elemento.querySelector('.bar').style.width = `${vidaV1}%`
         
         //---------- Luta 2
-          this.luta2Elemento.querySelector('.nome').innerHTML = `${this.luta2.nome} - ${this.luta2.life} HP`
+          this.luta2Elemento.querySelector('.nome').innerHTML = `${this.luta2.nome} - ${this.luta2.life.toFixed(1)} HP`
         //Porcentagem de Vida
         let vidaV2 = (this.luta2.life / this.luta2.maxLife) * 100  
         this.luta2Elemento.querySelector('.bar').style.width = `${vidaV2}%`  
        }  
+
+       fazerAtaque(atacando, atacado) {
+        //Verificação quem estará vivo na luta:
+        if(atacando.life <= 0 || atacado.life <= 0) {
+          console.log(`Atacando cachorro morto`)
+          return
+        }
+
+        let fatorAtaque = (Math.random() * 2).toFixed(2)
+        let fatorDefesa = (Math.random() * 2).toFixed(2)
+             
+        let atualAtaque = atacando.attack * fatorAtaque
+        let atualDefesa = atacado.defense * fatorDefesa
+
+        if(atualAtaque > atualDefesa) {
+          atacado.life -= atualAtaque
+          console.log(`${atacando.nome} causou ${atualAtaque.toFixed(2)} de dano em ${atacado.nome}`)
+        } else {
+          console.log(`${atacado.nome} conseguiu defender...`)
+        }
+
+        this.atualiza()
+       }
 
   }
 
